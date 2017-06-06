@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/left.css' />
+    <title><%= title %></title>
+</head>
+<body>
+<div id="left_div1">
+    <form method="post" id="student_left" name="student_left" action="/student_left">
+        <div id="div2">
+            <table>
+                <tr>
+                    <td>
+                        <input type="button" id="teacher_course" name="teacher_course" onclick="teacher_course_click()" value="课题信息">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="teacher_score" name="teacher_score" onclick="teacher_score_click()" value="录入成绩">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" id="teacher_password" name="teacher_password" onclick="teacher_password_click()" value="修改密码">
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
+</body>
+</html>

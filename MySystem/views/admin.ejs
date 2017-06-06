@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel='stylesheet' href='/stylesheets/body.css' />
+    <% include nav.ejs%>
+    <% include admin_left.ejs%>
+</head>
+<script>
+    var table_system1 = document.getElementById('form_admin_student').value
+    var table_system2 = document.getElementById('form_admin_teacher').value
+    var table_system3 = document.getElementById('form_admin_course').value
+    //查看学生信息
+    function admin_student_click() {
+        table_system1 = 'block'
+        table_system2 = 'none'
+        table_system3 = 'none'
+        document.getElementById('form_admin_student').submit()
+        return true
+    }
+    //查看教师信息
+    function admin_teacher_click() {
+        table_system1 = 'none'
+        table_system2 = 'block'
+        table_system3 = 'none'
+        document.getElementById('form_admin_teacher').submit()
+        return true
+    }
+    //查看课程信息
+    function adimin_course_click() {
+        table_system1 = 'none'
+        table_system2 = 'none'
+        table_system3 = 'block'
+        document.getElementById('form_admin_course').submit()
+        return true
+    }
+</script>
+
+<div id="div_system1">
+    <!--查看学生信息-->
+    <form id="form_admin_student" name="form_admin_student" method="post" action="/form_admin_student">
+        <table class="body_table" id="table_system1" cellspacing="10px" style="display: <%=table_display1%>">
+            <tr id="firstRow">
+                <th>学号</th>
+                <th>姓名</th>
+                <th>专业</th>
+                <th>已选课程</th>
+                <th>密码</th>
+            </tr>
+                <% student.forEach(function (row) {%>
+            <tr>
+                <td> <%= row._id%> </td>
+                <td> <%= row.name%></td>
+                <td> <%= row.major%></td>
+                <td> <%= row.courseId%></td>
+                <td> <%= row.password%></td>
+                <%})%>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td><input type="button" value="修改" id="button_revise" name="button_revise" onclick="admin_revise()"></td>
+                <td><input type="button" value="增加" id="button_add" name="button_add" onclick="admin_add()"></td>
+                <td><input type="button" value="删除" id="button_delete" name="button_delete" onclick="admin_delete()"></td>
+            </tr>
+        </table>
+    </form>
+
+    <!--查看教师信息-->
+    <form id="form_admin_teacher" name="form_admin_teacher" method="post" action="/form_admin_teacher">
+        <table class="body_table" id="table_system2" cellspacing="10px" style="display: <%=table_display2%>">
+            <tr id="firstRow">
+                <th>学号</th>
+                <th>姓名</th>
+                <th>专业</th>
+                <th>年级</th>
+                <th>已选课程</th>
+                <th>密码</th>
+            </tr>
+            <tr>
+                <% course.forEach(function (row) {%>
+                <td> <%= row._id%> </td>
+                <td> <%= row.name%></td>
+                <td> <%= row.teacher%></td>
+                <%})%>
+            </tr>
+        </table>
+    </form>
+
+    <!--查看课程信息-->
+    <form id="form_admin_course" name="form_admin_course" method="post" action="/form_admin_course">
+        <table class="body_table" id="table_system3" cellspacing="10px" style="display: <%=table_display3%>">
+            <tr id="firstRow">
+                <th>学号</th>
+                <th>姓名</th>
+                <th>专业</th>
+                <th>年级</th>
+                <th>已选课程</th>
+                <th>密码</th>
+            </tr>
+            <tr>
+                <% course.forEach(function (row) {%>
+                <td> <%= row._id%> </td>
+                <td> <%= row.name%></td>
+                <td> <%= row.teacher%></td>
+                <%})%>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+</html>

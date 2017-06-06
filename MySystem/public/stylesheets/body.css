@@ -1,0 +1,33 @@
+#div_system1{
+    position: absolute;
+    top: 150px;
+    left: 180px;
+}
+.body_table{
+
+    font-size: 19px;
+    border-collapse: separate;
+    display: none;
+}
+th{
+    width: 150px;
+    height: 31px;
+}
+#firstRow{
+    background-color: #E0EEEE;
+}
+
+td{
+
+    text-align: center;
+
+}
+input[type="password"]{
+    margin-top: 1px;
+    height: 30px;
+    width: 180px;
+}
+
+input[type="button"]{
+
+}

@@ -1,0 +1,66 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url("../images/Login_Background.jpg");
+  color: #4D4D4D;
+}
+
+#div_select{
+  color: #515151;
+}
+
+#divLogin{
+  font-size: 18px;
+  width: 350px;
+  color: #4D4D4D;
+  margin-left: 400px;
+}
+input[type='text']{
+  border: 2px solid;
+  height: 25px;
+  width: 160px;
+  color: #4D4D4D;
+}
+input[type="password"]{
+  border: 2px solid;
+  height: 25px;
+  width: 160px;
+  color: #4D4D4D;
+}
+input[type="button"]{
+  font-size: 18px;
+  width: 75px;
+  color: #4D4D4D;
+  border-radius: 8px;
+  background-image: url("../images/Login_Button.jpg");
+}
+#PowerError{
+  font-size: 15px;
+  color: brown;
+  margin-left: 100px;
+  display: none;
+}
+#ExitError{
+  font-size: 15px;
+  color: brown;
+  margin-left: 100px;
+  display: none;
+}
+#InputError{
+  font-size: 15px;
+  color: brown;
+  margin-left: 100px;
+  display: none;
+}
+
+#InputPower{
+  display: none;
+}
+#LoginError{
+  font-size: 15px;
+  color: brown;
+  position: absolute;
+  left: 490px;
+  top: 30px;
+  display: none;
+}

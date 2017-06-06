@@ -1,0 +1,26 @@
+body{
+    margin-left: 0px;
+    margin-top: 0px;
+    margin-right: 0px;
+}
+#div1{
+    background-image: url("../images/top.jpg");
+    height: 150px;
+}
+
+#p1{
+    font-size: 30px;
+    margin-top: 0px;
+    margin-left: 480px;
+    margin-bottom: 0px;
+    padding: 30px;
+    color: #4D4D4D;
+}
+
+#p2{
+    font-size: 20px;
+    margin-top: 5px;
+    margin-left: 495px;
+    color: #4D4D4D;
+}
+

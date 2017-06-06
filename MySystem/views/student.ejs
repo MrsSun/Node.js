@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<title><%= title %></title>
+<head>
+    <% include nav.ejs%>
+    <% include student_left.ejs%>
+    <link rel='stylesheet' href='/stylesheets/body.css' />
+</head>
+<script>
+    var table_system1 =  document.getElementById('table_system1').style.display
+    var table_system2 =  document.getElementById('table_system2').style.display
+    var table_system3 =  document.getElementById('table_system3').style.display
+    //查看所有课程信息
+    function student_course_click() {
+        table_system1 = 'block'
+        table_system2 = 'none'
+        table_system3 = 'none'
+        document.getElementById('form_student_course').submit()
+        return true
+    }
+    //查看已选课程信息
+    function student_selected_click() {
+        table_system1 = 'none'
+        table_system2 = 'block'
+        table_system3 = 'none'
+        document.getElementById('form_student_course_selected').submit()
+        return true
+    }
+    //显示修改密码
+    function student_password_click() {
+        table_system1 = 'none'
+        table_system2 = 'none'
+        table_system3 = 'block'
+        document.getElementById('form_student_password').submit()
+        return true
+    }
+    //修改密码确认按钮
+    function buttonConfim(){
+        var oldPassword = document.getElementById('oldPassword').value
+        var newPassword = document.getElementById('newPassword').value
+        var newPasswordCofim = document.getElementById('newPasswordCofim').value
+        if(oldPassword == '')
+            alert('请输入旧密码')
+        else if(newPassword == '')
+            alert('请输入新密码')
+        else if(newPasswordCofim == '')
+            alert('请输入旧密码')
+        else if(newPassword != newPasswordCofim )
+            alert('输入的新密码不相等')
+        else{
+            document.getElementById('form_student_password').submit()
+        }
+    }
+
+
+</script>
+<body>
+<div id="div_system1">
+    <!--查寻课程信息-->
+    <form id="form_student_course" name="form_student_course" method="post" action="/form_student_course">
+            <table class="body_table" id="table_system1" cellspacing="10px" style="display: <%=table_display1%>">
+                <tr id="firstRow">
+                    <th>课题号</th>
+                    <th>课程名</th>
+                    <th>任课老师</th>
+                </tr>
+                    <% course.forEach(function (row) {%>
+                <tr>
+                     <td> <%= row._id%> </td>
+                     <td> <%= row.name%></td>
+                     <td> <%= row.teacher%></td>
+                    <%})%>
+                </tr>
+                <tr>
+
+                </tr>
+            </table>
+    </form>
+
+    <!--查寻已选课程-->
+    <form id="form_student_course_selected" name="form_student_course_selected" method="post" action="/form_student_course_selected">
+        <table class="body_table" id="table_system2" cellspacing="10px" style="display: <%=table_display2%>">
+            <tr id="firstRow">
+                <th>课题号</th>
+                <th>课程名</th>
+                <th>任课老师</th>
+            </tr>
+            <tr>
+                <% course.forEach(function (row) {%>
+                <td> <%= row._id%> </td>
+                <td> <%= row.name%></td>
+                <td> <%= row.teacher%></td>
+                <%})%>
+            </tr>
+        </table>
+    </form>
+
+    <!--<修改密码>-->
+    <form id="form_student_password" name="form_student_password" method="post" action="/form_student_password">
+        <table class="body_table" id="table_system3" cellspacing="10px" style="display: <%=table_display3%>">
+            <tr>
+                <th>输入原密码</th>
+                <td> <input type="password" name="oldPassword" id="oldPassword"></td>
+            </tr>
+            <tr>
+                <th>修改密码</th>
+                <td> <input type="password" name="newPassword" id="newPassword"></td>
+            </tr>
+            <tr>
+                <th>确认密码</th>
+                <td> <input type="password" name="newPasswordCofim" id="newPasswordCofim"></td>
+            </tr>
+            <tr>
+                <td></td>
+               <td><input type="button" value="确定" id="button_confim" name="button_confim" onclick="buttonConfim()"></td>
+            </tr>
+        </table>
+    </form>
+
+</div>
+
+</body>
+
+</html>

@@ -1,0 +1,26 @@
+body{
+    margin-bottom: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+#left_div1{
+    background-image: url("../images/top.jpg");
+    width: 180px;
+    height: 400px;
+}
+table{
+    border: 0px;
+}
+td{
+   padding-top: 20px;
+}
+input[type="button"]{
+    width: 150px;
+    height: 30px;
+    border: 0px;
+    margin-left: 10px;
+    font-size: 18px;
+    color: #4D4D4D;
+    background-color: #E0EEEE;
+}

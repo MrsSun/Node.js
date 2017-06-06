@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/login.css' />
+  </head>
+  <script>
+    //权限
+    var power
+    //表示已经选择了权限
+    var selectedflag = 0
+    function FirstFunction() {
+//        div_center();
+        init()
+    }
+    function  init() {
+        power = 0
+        selectedflag = 0
+        document.getElementById('PowerError').style.display = "none"
+        document.getElementById('PowerError').style.display = "none"
+
+        //登录失败显示错误信息
+    }
+    /*
+       选择框的权限的判断及存储
+     */
+    function click_radio() {
+        var teacher = document.getElementById('raTeacher')
+        var student = document.getElementById('raStudent')
+        var admin = document.getElementById('raAdmin')
+        selectedflag = 1
+        if(teacher.checked)
+           power = 0
+        if(student.checked)
+           power = 1
+        if(admin.checked)
+           power = 2
+    }
+
+    /*
+      让div居中显示
+     */
+     function div_center() {
+         var window_width = document.documentElement.clientWidth;
+         var divLogin = document.getElementById('divLogin');
+         var div_width = divLogin.clientWidth;
+         divLogin.style.marginLeft = (window_width - div_width)/2  - 30+ "px";
+         divLogin.style.display = "table"
+     }
+     /*
+        点击登录按钮提交订单
+      */
+    function button_Login(){
+         var txUserID = document.getElementById('txUsername').value.trim()
+         var pwPassword = document.getElementById('pwPassword').value.trim()
+         if( txUserID == '' || pwPassword == ''){//判断用户名和密码是否输入
+             var err = document.getElementById('InputError')
+             err.style.display = "block"
+             return false
+         }
+         if(selectedflag == 0){//表示没有选择radio权限
+             var err = document.getElementById('PowerError')
+             err.style.display = "block"
+             return false
+         }
+         document.getElementById('InputPower').value = power;
+         document.getElementById('formLogin').submit()
+    }
+  </script>
+  <body onload="FirstFunction()">
+  <div id="div_select">
+    <h2 id="h_select">选&nbsp&nbsp课&nbsp&nbsp系&nbsp&nbsp统</h2>
+  </div>
+   <form id = 'formLogin' name="formLogin" action="/login" method="post">
+     <input type="text" id="InputPower" name="InputPower">
+     <div id="divLogin">
+       <table width="300" cellspacing="10" cellpadding="10" id="tableLogin">
+         <tr>
+           <p id="InputError">请输入用户名密码</p>
+           <p id="PowerError">请选择权限</p>
+           <p id="ExitError">用户名或密码错误</p>
+         </tr>
+         <tr>
+           <td align="center">用户名</td>
+           <td colspan="2"><input type="text" id="txUsername" name="txUsername" class="txt"></td>
+         </tr>
+         <tr>
+           <td align="center">密&nbsp&nbsp码</td>
+           <td colspan="2"><input type="password" id="pwPassword" name="pwPassword"></td>
+         </tr>
+         <tr>
+           <td><input type="radio" id="raTeacher" name="selectradio" onclick="click_radio()">教师</td>
+           <td><input type="radio" id="raStudent" name="selectradio" onclick="click_radio()">学生</td>
+           <td><input type="radio" id="raAdmin" name="selectradio" onclick="click_radio()">管理员</td>
+         </tr>
+         <tr>
+           <td></td> <td></td>
+           <td><input type="button" id="btLogin" name="btLogin" onclick="button_Login()" value="登录"></td>
+         </tr>
+       </table>
+     </div>
+   </form>
+  <div id="LoginError" style="display: <%= successIsNot%>;">
+    <p>用户名或密码或权限错误</p>
+  </div>
+  </body>
+</html>

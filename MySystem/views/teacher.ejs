@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<title><%= title%></title>
+<head>
+    <link rel='stylesheet' href='/stylesheets/body.css' />
+    <% include nav.ejs%>
+    <% include teacher_left.ejs%>
+</head>
+<form id="form_teacher" name="form_teacher" method="post" action="/teacher">
+    <div id="div_system1">
+        <table id="table_system1">
+           <tr>
+               <th>职工号</th>
+               <th>姓名</th>
+               <th>性别</th>
+           </tr>
+        </table>
+    </div>
+</form>
+
+</html>
